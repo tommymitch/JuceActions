@@ -26,17 +26,7 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: Clone Juce
+      - name: Build Juce
         run: |
-          echo Cloning JUCE.....
-          git clone --branch 6.0.7 https://github.com/juce-framework/JUCE.git
-          
-      - name: Build the Projucer
-        run: |
-          echo Building the Projucer
-          XCODE_PROJECT_LOCATION="JUCE/extras/Projucer/Builds/MacOSX/Projucer.xcodeproj"
-          SDK=macosx
-          SCHEME="Projucer - App"
-          xcodebuild -sdk $SDK -project "$XCODE_PROJECT_LOCATION" -scheme "$SCHEME" -configuration Release install DSTROOT="Output/build5000"
-          pwd
-          ls -la
+          cp JuceActions/build.sh .
+          ./build.sh
