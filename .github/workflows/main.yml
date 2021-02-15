@@ -45,6 +45,7 @@ jobs:
       - name: Building JuceActions
         run: |
           XCODE_PROJECT="JuceActions/Builds/MacOSX/JuceActions.xcodeproj"
+          SDK=macosx
           SCHEME="JuceActions - App"
           BUILD_PATH="JuceActions/Builds/MacOSX/build/Release"
           BUILD_DESTINATION="$BUILD_PATH/JuceActions.xcarchive"
