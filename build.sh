@@ -9,14 +9,14 @@ xcodebuild -sdk $SDK -project "$XCODE_PROJECT" -scheme "$SCHEME" -configuration 
 PROJUCER_PATH="JUCE/extras/Projucer/Builds/MacOSX/Build/Release/Projucer.app/Contents/MacOS/Projucer"
 
 echo "Creating JuceActions xcode project..."
-PROJUCER_PROJECT_PATH="JuceActions/JuceActions/JuceActions.jucer"
+PROJUCER_PROJECT_PATH="JuceActions/JuceActions.jucer"
 ./$PROJUCER_PATH --resave $PROJUCER_PROJECT_PATH
 
 echo "Building JuceActions"
-XCODE_PROJECT="JuceActions/JuceActions/Builds/MacOSX/JuceActions.xcodeproj"
+XCODE_PROJECT="JuceActions/Builds/MacOSX/JuceActions.xcodeproj"
 SCHEME="JuceActions - App"
 
-BUILD_PATH="JuceActions/JuceActions/Builds/MacOSX/build/Release"
+BUILD_PATH="JuceActions/Builds/MacOSX/build/Release"
 BUILD_DESTINATION="$BUILD_PATH/JuceActions.xcarchive"
 
 xcodebuild -sdk $SDK -project "$XCODE_PROJECT" -scheme "$SCHEME" -configuration Release archive -archivePath "$BUILD_DESTINATION" -jobs 8
