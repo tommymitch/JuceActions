@@ -28,5 +28,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: Build Juce
         run: |
+          cd ..
           cp JuceActions/build.sh .
           ./build.sh
