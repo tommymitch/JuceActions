@@ -26,13 +26,14 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
+      - name: Clone Juce
         run: |
-          echo Hello, world!
+          echo Cloning JUCE.....
+          git clone --branch 6.0.7 https://github.com/juce-framework/JUCE.git
+          
+      - name: Build the Projucer
+        run: |
+          echo Building the Projucer
+          pwd
+          ls
           xcodebuild --help
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
