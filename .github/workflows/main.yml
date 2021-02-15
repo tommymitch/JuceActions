@@ -34,6 +34,9 @@ jobs:
       - name: Build the Projucer
         run: |
           echo Building the Projucer
+          XCODE_PROJECT_LOCATION="JUCE/extras/Projucer/Builds/MacOSX/Projucer.xcodeproj"
+          SDK=macosx
+          SCHEME="Projucer - App"
+          xcodebuild -sdk $SDK -project "$XCODE_PROJECT_LOCATION" -scheme "$SCHEME" -configuration Release install DSTROOT="Output/build5000"
           pwd
-          ls
-          xcodebuild --help
+          ls -la
