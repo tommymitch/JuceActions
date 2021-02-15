@@ -38,7 +38,7 @@ jobs:
       - name: Creating JuceActions Xcode project
         run: |
           PROJUCER_PATH="JUCE/extras/Projucer/Builds/MacOSX/Build/Release/Projucer.app/Contents/MacOS/Projucer"
-          PROJUCER_PROJECT_PATH="JuceActions/JuceActions.jucer"
+          PROJUCER_PROJECT_PATH="JuceActions.jucer"
           ./$PROJUCER_PATH --resave $PROJUCER_PROJECT_PATH 
         
       - name: Building JuceActions
