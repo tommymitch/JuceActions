@@ -25,6 +25,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Build Juce
-        run: ./build.sh
+      - name: Cloning JUCE
+        run: git clone --branch 6.0.7 https://github.com/juce-framework/JUCE.git
+
+      - name: Building the Projucer
+        run: |
+          XCODE_PROJECT="JUCE/extras/Projucer/Builds/MacOSX/Projucer.xcodeproj"
+          SDK=macosx
+          SCHEME="Projucer - App"
+          xcodebuild -sdk $SDK -project "$XCODE_PROJECT" -scheme "$SCHEME" -configuration Release install -jobs 8
+
+      - name: Creating JuceActions xcode project
+        run: |
+          PROJUCER_PATH="JUCE/extras/Projucer/Builds/MacOSX/Build/Release/Projucer.app/Contents/MacOS/Projucer"
+          PROJUCER_PROJECT_PATH="JuceActions/JuceActions.jucer"
+          ./$PROJUCER_PATH --resave $PROJUCER_PROJECT_PATH 
