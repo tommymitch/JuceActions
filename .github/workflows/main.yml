@@ -29,6 +29,9 @@ jobs:
         run: |
           pwd
           ls -la
+          cd JuceActions
+          pwd
+          ls -la
 
 #       - name: Cloning JUCE
 #         run: git clone --branch 6.0.7 https://github.com/juce-framework/JUCE.git
