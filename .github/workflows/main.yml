@@ -55,9 +55,10 @@ jobs:
             mkdir $BUILD_PATH/deployment
           fi
           cp -r  $BUILD_DESTINATION/Products/Users/$USER/Applications/JuceActions.app $BUILD_PATH/deployment/JuceActions.app
+          zip -r $BUILD_PATH/deployment/JuceActions.zip $BUILD_PATH/deployment/JuceActions.app
           
       - name: Upload artifact 
         uses: actions/upload-artifact@v2
         with:
           name: JuceActions
-          path: JuceActions/Builds/MacOSX/build/Release/deployment/
+          path: JuceActions/Builds/MacOSX/build/Release/deployment/JuceActions.zip
