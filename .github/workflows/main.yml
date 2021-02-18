@@ -50,15 +50,19 @@ jobs:
           BUILD_PATH="JuceActions/Builds/MacOSX/build/Release"
           BUILD_DESTINATION="$BUILD_PATH/JuceActions.xcarchive"
           xcodebuild -sdk $SDK -project "$XCODE_PROJECT" -scheme "$SCHEME" -configuration Release archive -archivePath "$BUILD_DESTINATION" -jobs 8
+          
+      - name: Preparing upload
           echo Copying to useful location...
           if [ ! -d "$BUILD_PATH/deployment" ]; then
             mkdir $BUILD_PATH/deployment
           fi
           cp -r  $BUILD_DESTINATION/Products/Users/$USER/Applications/JuceActions.app $BUILD_PATH/deployment/JuceActions.app
-          tar -cvf $BUILD_PATH/deployment/JuceActions.tar $BUILD_PATH/deployment/JuceActions.app
+          pwd
+          cd $BUILD_PATH/deployment/
+          tar -cvf JuceActions.tar JuceActions.app
           
       - name: Upload artifact 
         uses: actions/upload-artifact@v2
         with:
           name: JuceActions
-          path: JuceActions/Builds/MacOSX/build/Release/deployment/JuceActions.tar
+          path: JuceActions.tar
