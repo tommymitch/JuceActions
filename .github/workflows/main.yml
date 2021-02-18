@@ -65,3 +65,9 @@ jobs:
           name: JuceActions
           path: JuceActions/Builds/MacOSX/build/Release/deployment/JuceActions.tar
 
+      - name: Upload to release
+        uses: "actions/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          files: JuceActions/Builds/MacOSX/build/Release/deployment/JuceActions.tar
