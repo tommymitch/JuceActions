@@ -63,4 +63,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: JuceActions
-          path: JuceActions.tar
+          path: JuceActions/Builds/MacOSX/build/Release/deployment/JuceActions.tar
+
