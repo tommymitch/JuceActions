@@ -55,10 +55,11 @@ jobs:
             mkdir $BUILD_PATH/deployment
           fi
           cp -r  $BUILD_DESTINATION/Products/Users/$USER/Applications/JuceActions.app $BUILD_PATH/deployment/JuceActions.app
-          tar -cvf JuceActions.tar $BUILD_PATH/deployment/JuceActions.app
+          tar -cvf $BUILD_PATH/deployment/JuceActions.tar $BUILD_PATH/deployment/JuceActions.app
           
       - name: Upload artifact 
         uses: actions/upload-artifact@v2
         with:
           name: JuceActions
-          path: JuceActions.tar
+          path: JuceActions/Builds/MacOSX/build/Release/deployment/JuceActions.tar
+JuceActions.tar
